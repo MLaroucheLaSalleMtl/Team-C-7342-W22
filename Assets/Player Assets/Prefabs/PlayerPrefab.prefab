@@ -254,4 +254,4 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
-  jumpForce: 1
+  jumpForce: 0.5

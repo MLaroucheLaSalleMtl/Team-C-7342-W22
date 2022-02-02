@@ -10,17 +10,18 @@ public class SceneManagerScript : MonoBehaviour
     public string levelToResumeFrom;
     private int checkpointToResumeFrom;
 
+    //Made by Elizabeth
 
     public void LoadLevel()
     {
-        StartCoroutine(AsyncLoad("SampleScene"));   
+        StartCoroutine(AsyncLoad("PlayerTestScene"));   
     }
 
 
     //check needs to be added so that you can't click the continue button if there is no save file
     public void ContinueGame()
     {
-        levelToResumeFrom = "SampleScene";
+        levelToResumeFrom = "PlayerTestScene";
         checkpointToResumeFrom = 0;
         Debug.Log("current checkpoint " + checkpointToResumeFrom);
         StartCoroutine(AsyncLoad(levelToResumeFrom));

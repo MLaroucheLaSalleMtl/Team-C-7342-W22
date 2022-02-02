@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isJumping = false;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask whatIsGround;
-    [SerializeField] private float jumpForce = 10f;
+    [SerializeField] private float jumpForce = 0.5f;
     const float checkRadius = 0.2f;
 
     //M&K inputs
@@ -77,4 +77,5 @@ public class PlayerMovement : MonoBehaviour
     {
         GroundCheck();
     }
+
 }

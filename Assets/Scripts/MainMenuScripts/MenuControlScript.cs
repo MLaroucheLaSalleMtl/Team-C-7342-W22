@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Made by Elizabeth
+
 public class MenuControlScript : MonoBehaviour
 {
     private GameObject mmCanvas;
@@ -40,7 +42,7 @@ public class MenuControlScript : MonoBehaviour
 
 
         //remember to set to set to true to test closing the game in the editor, otherwise it prevents the build from being made
-#if true
+#if false
         else
             UnityEditor.EditorApplication.isPlaying = false;
 #endif
