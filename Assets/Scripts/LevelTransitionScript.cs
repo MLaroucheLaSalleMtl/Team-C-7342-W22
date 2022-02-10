@@ -7,7 +7,7 @@ public class LevelTransitionScript : MonoBehaviour
 {
     //Need to figure out how to get this to be a variable in the editor, otherwise scene transitions will need to be hard-coded for each instance
     [SerializeField]
-    private Scene nextScene;
+    private int[] SceneArray;
 
     public void Start()
     {
@@ -16,11 +16,11 @@ public class LevelTransitionScript : MonoBehaviour
 
     public void LoadLevel()
     {
-        StartCoroutine(AsyncLoad("MainMenuScene"));
+        StartCoroutine(AsyncLoad((int)GameManager.Levels.LVL_LEVELONE));
     }
 
     //check needs to be added so that you can't click the continue button if there is no save file
-    IEnumerator AsyncLoad(string lvl)
+    IEnumerator AsyncLoad(int lvl)
     {
         AsyncOperation operation = SceneManager.LoadSceneAsync(lvl);
 

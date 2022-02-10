@@ -7,27 +7,26 @@ using UnityEngine.SceneManagement;
 
 public class SceneManagerScript : MonoBehaviour
 {
-    public string levelToResumeFrom;
+    public int levelToResumeFrom;
     private int checkpointToResumeFrom;
 
     //Made by Elizabeth
 
-    public void LoadLevel()
+    public void NewGame()
     {
-        StartCoroutine(AsyncLoad("PlayerTestScene"));   
+        StartCoroutine(AsyncLoad((int)GameManager.Levels.LVL_LEVELONE));   
     }
 
 
     //check needs to be added so that you can't click the continue button if there is no save file
     public void ContinueGame()
     {
-        levelToResumeFrom = "PlayerTestScene";
+        levelToResumeFrom = (int)GameManager.Levels.LVL_LEVELONE;
         checkpointToResumeFrom = 0;
-        Debug.Log("current checkpoint " + checkpointToResumeFrom);
         StartCoroutine(AsyncLoad(levelToResumeFrom));
     }
 
-    IEnumerator AsyncLoad(string lvl)
+    IEnumerator AsyncLoad(int lvl)
     {
         AsyncOperation operation = SceneManager.LoadSceneAsync(lvl);
 

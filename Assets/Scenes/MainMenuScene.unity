@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f58c545939dc0414793db356800ab5ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelToResumeFrom: 
+  levelToResumeFrom: 0
 --- !u!4 &67934674
 Transform:
   m_ObjectHideFlags: 0
@@ -841,9 +841,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 67934673}
-        m_TargetAssemblyTypeName: SceneManagerScript, Assembly-CSharp
-        m_MethodName: ContinueGame
+      - m_Target: {fileID: 67934675}
+        m_TargetAssemblyTypeName: MenuControlScript, Assembly-CSharp
+        m_MethodName: ContinueGameButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1972,9 +1972,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 67934673}
-        m_TargetAssemblyTypeName: SceneManagerScript, Assembly-CSharp
-        m_MethodName: LoadLevel
+      - m_Target: {fileID: 67934675}
+        m_TargetAssemblyTypeName: MenuControlScript, Assembly-CSharp
+        m_MethodName: NewGameButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

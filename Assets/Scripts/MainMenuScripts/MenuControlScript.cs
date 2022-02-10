@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 //Made by Elizabeth
 
@@ -9,13 +11,34 @@ public class MenuControlScript : MonoBehaviour
     private GameObject mmCanvas;
     private GameObject optionsCanvas;
     private GameObject creditsCanvas;
+    private bool foundSave;
     private void Start()
     {
         mmCanvas = GameObject.Find("MainMenuCanvas");
         optionsCanvas = GameObject.Find("OptionsMenuCanvas");
         creditsCanvas = GameObject.Find("CreditsCanvas");
+        if(GameManager.hasSave)
+        {
+            foundSave = true;
+        }
+        else
+        {
+            GameObject.Find("ContinueButton").GetComponent<Button>().interactable = false;
+            
+            foundSave = false;
+        }
     }
 
+
+    public void NewGameButton()
+    {
+        gameObject.GetComponent<SceneManagerScript>().NewGame();
+    }
+
+    public void ContinueGameButton()
+    {
+        gameObject.GetComponent<SceneManagerScript>().ContinueGame();
+    }
     public void OpenOptions()
     {
         mmCanvas.GetComponent<Canvas>().enabled = false;
