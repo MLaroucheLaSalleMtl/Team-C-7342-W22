@@ -94,8 +94,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6362349070229552145}
   - component: {fileID: 6362349070229552158}
-  - component: {fileID: 6362349070229552156}
   - component: {fileID: 7730957485335993096}
+  - component: {fileID: 513378030881842254}
   m_Layer: 0
   m_Name: Turret
   m_TagString: Untagged
@@ -171,19 +171,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6362349070229552156
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6362349070229552157}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 262bd0f5b21befc43a6f850e2b743523, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rayTarget: {fileID: 6362349069611471081}
 --- !u!120 &7730957485335993096
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -283,3 +270,16 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!114 &513378030881842254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6362349070229552157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 262bd0f5b21befc43a6f850e2b743523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rayTarget: {fileID: 6362349069611471081}

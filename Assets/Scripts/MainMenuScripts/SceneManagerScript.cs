@@ -21,8 +21,9 @@ public class SceneManagerScript : MonoBehaviour
     //check needs to be added so that you can't click the continue button if there is no save file
     public void ContinueGame()
     {
-        levelToResumeFrom = (int)GameManager.Levels.LVL_LEVELONE;
-        checkpointToResumeFrom = 0;
+        levelToResumeFrom = GameManager.levelToLoad;
+        Debug.Log("resuming level " + levelToResumeFrom);
+        checkpointToResumeFrom = GameManager.checkpointToLoad;
         StartCoroutine(AsyncLoad(levelToResumeFrom));
     }
 

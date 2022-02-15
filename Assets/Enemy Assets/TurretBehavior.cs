@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBehavior : MonoBehaviour
+public class TurretBehavior : MonoBehaviour
 {
 
     /*---------------------------------------------
@@ -43,22 +43,24 @@ public class EnemyBehavior : MonoBehaviour
         line.SetPositions(pos.ToArray());
         line.useWorldSpace = true;
 
-        if (Physics2D.Linecast(startPosition, endPosition))
+        DamageOverTime(startPosition, endPosition);
+    }
+
+    //Method used for player damage over time
+    void DamageOverTime(Vector2 start, Vector2 end)
+    {
+
+        if (Physics2D.Linecast(start, end))
         {
-            targetCollider = Physics2D.Linecast(startPosition, endPosition).collider;
+            targetCollider = Physics2D.Linecast(start, end).collider;
             print("ray just hit the gameobject: " + targetCollider.gameObject.name);
 
-            if(targetCollider.gameObject.name == "Player")
+            if (targetCollider.gameObject.name == "Player")
             {
                 playerHealth = targetCollider.GetComponent<PlayerHealthManager>();
                 playerHealth.TakeDamage(-5.0f * Time.deltaTime);
             }
 
         }
-    }
-
-    void FireProjectile()
-    {
-
     }
 }

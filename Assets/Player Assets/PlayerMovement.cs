@@ -37,7 +37,6 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         Movement();
-        Jumping();
         //JoystickPosition(); //Method for gamepad controls (Not Implemented yet)
     }
 
@@ -76,6 +75,7 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         GroundCheck();
+        Jumping();
     }
 
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 //Made by Elizabeth
 
@@ -17,18 +18,27 @@ public class MenuControlScript : MonoBehaviour
         mmCanvas = GameObject.Find("MainMenuCanvas");
         optionsCanvas = GameObject.Find("OptionsMenuCanvas");
         creditsCanvas = GameObject.Find("CreditsCanvas");
-        if(GameManager.hasSave)
+        optionsCanvas.GetComponent<Canvas>().enabled = false;
+        creditsCanvas.GetComponent<Canvas>().enabled = false;
+
+        RefreshMenu();
+
+    }
+
+    private void RefreshMenu()
+    {
+        if (GameManager.hasSave)
         {
             foundSave = true;
+            GameManager.LoadSave();
         }
         else
         {
             GameObject.Find("ContinueButton").GetComponent<Button>().interactable = false;
-            
+            GameObject.Find("DeleteSaveButton").GetComponent<Button>().interactable = false;
             foundSave = false;
         }
     }
-
 
     public void NewGameButton()
     {
@@ -57,6 +67,14 @@ public class MenuControlScript : MonoBehaviour
         optionsCanvas.GetComponent<Canvas>().enabled = false;
         creditsCanvas.GetComponent<Canvas>().enabled = false;
     }
+
+    public void DeleteSave()
+    {
+        GameManager.DeleteSave();
+        Debug.Log("button clicked");
+        RefreshMenu();
+    }
+
 
     public void ExitGame()
     {
