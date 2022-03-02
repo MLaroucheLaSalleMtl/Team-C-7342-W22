@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6281164460497907530}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.338, z: 0}
+  m_LocalPosition: {x: 0, y: -0.337, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -63,9 +63,10 @@ GameObject:
   - component: {fileID: 6281164460678579246}
   - component: {fileID: 6281164460678579247}
   - component: {fileID: 4106150863460069348}
-  m_Layer: 0
+  - component: {fileID: 2194757925768151806}
+  m_Layer: 8
   m_Name: PlayerPrefab
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -78,7 +79,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6281164460678579240}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.51, y: 0.33, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -232,6 +233,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: e9749a8f-6873-4cee-a0cb-3a13d709011a
     m_ActionName: Player/Jump[/Keyboard/space,/Keyboard/w,/Keyboard/upArrow]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2194757925768151806}
+        m_TargetAssemblyTypeName: ShieldScript, Assembly-CSharp
+        m_MethodName: SummonShield
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 8a393fb7-af48-47df-b4f1-c76a75371278
+    m_ActionName: Player/Shield[/Mouse/leftButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Mouse & Keyboard
   m_DefaultActionMap: Player
@@ -254,8 +271,8 @@ MonoBehaviour:
   groundCheck: {fileID: 6281164460497907533}
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 64
-  jumpForce: 0.5
+    m_Bits: 128
+  jumpForce: 1
 --- !u!114 &4106150863460069348
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,3 +286,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealth: 100
+  SceneLoader: {fileID: 0}
+--- !u!114 &2194757925768151806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6281164460678579240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74340c85a35d36d429478103de3208be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shield: {fileID: 7567246376433924066, guid: 22a830112dd849d4eae59b2fdac14bec, type: 3}
+  shieldChargeMax: 3

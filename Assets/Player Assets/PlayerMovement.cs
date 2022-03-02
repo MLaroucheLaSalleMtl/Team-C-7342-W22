@@ -32,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
+        whatIsGround = LayerMask.GetMask("Obstacle");
     }
 
     void Update()

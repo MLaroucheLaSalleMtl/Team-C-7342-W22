@@ -6,16 +6,17 @@ TagManager:
   tags:
   - LevelEnd
   - Trap
+  - Shield
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Missile
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Shield
+  - Obstacle
+  - Player
   - 
   - 
   - 
