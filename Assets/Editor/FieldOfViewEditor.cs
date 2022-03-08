@@ -6,6 +6,11 @@ using UnityEngine;
 [CustomEditor (typeof(EnemyLineOfSight))]
 public class FieldOfViewEditor : Editor
 {
+
+    /*---------------------------------------------
+     * Code written by Coleman Ostach
+     ---------------------------------------------*/
+
     private void OnSceneGUI()
     {
         EnemyLineOfSight los = (EnemyLineOfSight)target;

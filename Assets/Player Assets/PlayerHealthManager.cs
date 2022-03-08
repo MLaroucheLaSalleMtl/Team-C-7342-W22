@@ -10,7 +10,7 @@ public class PlayerHealthManager : MonoBehaviour
      ---------------------------------------------*/
 
 
-    [SerializeField] private float playerHealth = 100.0f;
+    public float playerHealth = 100.0f;
     private float playerMaxHealth = 100.0f;
 
     [SerializeField] LevelTransitionScript SceneLoader;

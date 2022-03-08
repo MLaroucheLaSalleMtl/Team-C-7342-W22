@@ -29,12 +29,12 @@ public class KeycardsPickUp : MonoBehaviour
     //}
 
     private void Update()
-   {
+    {
        if(ableToPickUp && Input.GetKeyDown(KeyCode.F))
         {                               // will check if player is in range (ableToPickUp = true)               
             PickUpKeycard();            // and if "F" key is pressed as well then this method is called
         } 
-   }
+    }
 
     private void OnTriggerEnter2D(Collider2D collision) //invoked when player collides with keycard object
     {

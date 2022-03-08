@@ -15,6 +15,9 @@ public class TurretRotation : MonoBehaviour
     private float angle;
     private Quaternion rotation;
     [SerializeField] private float offset = 0.16f; //Offset in order to correctly rotate from the head pivot point
+    public Transform barrelTransform;
+
+    SpriteRenderer sprite;
 
     EnemyLineOfSight los;
 
@@ -22,6 +25,7 @@ public class TurretRotation : MonoBehaviour
     void Start()
     {
         los = GetComponent<EnemyLineOfSight>();
+        sprite = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -31,5 +35,14 @@ public class TurretRotation : MonoBehaviour
         angle = Mathf.Atan2((direction.y - offset), direction.x) * Mathf.Rad2Deg;
         rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
+
+        if (transform.eulerAngles.z >= 270 && transform.eulerAngles.z <= 360 || transform.eulerAngles.z >= 0 && transform.eulerAngles.z <= 90)
+        {
+            sprite.flipY = false;
+        }
+        else
+        {
+            sprite.flipY = true;
+        }
     }
 }

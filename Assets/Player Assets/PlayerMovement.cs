@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask whatIsGround;
     [SerializeField] private float jumpForce = 0.5f;
-    const float checkRadius = 0.2f;
+    const float checkRadius = 0.1f;
 
     //M&K inputs
     private float keyHorizontalInput = 0;
@@ -51,9 +51,7 @@ public class PlayerMovement : MonoBehaviour
     void Jumping()
     {
         if (isJumping && isGrounded)
-        {
             rigid.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
-        }
     }
 
     void GroundCheck()

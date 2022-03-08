@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class EnemyLineOfSight : MonoBehaviour
 {
+
+    /*---------------------------------------------
+     * Code written by Coleman Ostach
+     ---------------------------------------------*/
+
     public float viewRadius;
     [Range(0,360)]public float viewAngle;
 

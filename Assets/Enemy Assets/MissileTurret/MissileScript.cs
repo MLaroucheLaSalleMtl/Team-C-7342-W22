@@ -31,10 +31,15 @@ public class MissileScript : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             Debug.Log("ow");
+            collision.gameObject.GetComponent<PlayerHealthManager>().TakeDamage(-10); //Coleman
         }
         else if (collision.gameObject.CompareTag("Shield"))
         {
             //rb.AddForce(transform.right * missileSpeed);
+        }
+        else if (collision.gameObject.CompareTag("Enemy"))
+        {
+            collision.gameObject.GetComponent<EnemyHealthManager>().TakeHit();
         }
         else
         {

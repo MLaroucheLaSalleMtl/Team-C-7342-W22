@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 3501266055648535401}
   - component: {fileID: 3501266055648535400}
   - component: {fileID: 3501266055648535414}
+  - component: {fileID: 1086010459537407225}
   m_Layer: 0
   m_Name: RotatingTurret
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: -325252127, guid: 19d02b4555bd521468dfe8b7c2eedf23, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -117,6 +118,19 @@ PolygonCollider2D:
       - {x: 0.33333334, y: -0.33333334}
       - {x: 0.33, y: -0.18}
       - {x: 0.083333336, y: 0.33333334}
+--- !u!114 &1086010459537407225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3501266055648535403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ac091e3838a58f4eb9996d4ddbc4a11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyHealth: 5
 --- !u!1 &3501266055888463268
 GameObject:
   m_ObjectHideFlags: 0
@@ -193,7 +207,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: -258071366, guid: 19d02b4555bd521468dfe8b7c2eedf23, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
@@ -233,7 +247,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.16425252, y: -0.10739577}
+  m_Offset: {x: -0.0033097267, y: -0.016064227}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.6825, y: 0.25}
@@ -244,7 +258,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.91580915, y: 0.16997957}
+  m_Size: {x: 1.2509336, y: 0.35264266}
   m_EdgeRadius: 0
 --- !u!1 &3501266055952457386
 GameObject:
@@ -271,7 +285,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3501266055952457386}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.83, y: -0.16, z: 0}
+  m_LocalPosition: {x: 1.03, y: 0.06, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
