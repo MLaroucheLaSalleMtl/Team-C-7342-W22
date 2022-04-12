@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 7567246376433924066}
   m_LocalRotation: {x: 0, y: 0, z: 0.27563733, w: 0.96126175}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -111,10 +111,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 1.080457, y: -1.5119983}
-      - {x: 1.9181703, y: -0.17324223}
-      - {x: 1.5946724, y: 1.2278547}
-      - {x: -0.2665283, y: -1.8916006}
+    - - {x: 1.1223166, y: -1.2793201}
+      - {x: 1.6506162, y: -0.39430773}
+      - {x: 1.6156216, y: 1.1371137}
+      - {x: -0.31305608, y: -1.9660606}
 --- !u!50 &-4704965988560371822
 Rigidbody2D:
   serializedVersion: 4
@@ -131,7 +131,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 18f16fa03cfde1a48b8fcc1945000429, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0

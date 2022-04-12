@@ -24,6 +24,10 @@ public class FlyingEnemyAI : MonoBehaviour
     Seeker seeker;
     Rigidbody2D rigid;
 
+    //Timer for FindTarget
+    float secs = 5f;
+    float currentTime = 0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -48,9 +52,21 @@ public class FlyingEnemyAI : MonoBehaviour
         }
     }
 
+    void FindTarget()
+    {
+        Collider2D targetCollider = Physics2D.OverlapCircle(transform.position, 5);
+
+        if(targetCollider.CompareTag("Player"))
+        {
+            target = targetCollider.transform;
+        }
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
+        FindTarget();
+
         if (path == null)
             return;
 

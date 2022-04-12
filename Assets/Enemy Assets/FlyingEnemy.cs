@@ -5,6 +5,11 @@ using Pathfinding;
 
 public class FlyingEnemy : MonoBehaviour
 {
+
+    /*---------------------------------------------
+     * Code written by Coleman Ostach
+     ---------------------------------------------*/
+
     public AIPath aiPath;
 
     // Update is called once per frame

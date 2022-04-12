@@ -32,6 +32,7 @@ public class MissileScript : MonoBehaviour
         {
             Debug.Log("ow");
             collision.gameObject.GetComponent<PlayerHealthManager>().TakeDamage(-10); //Coleman
+            Destroy(gameObject);
         }
         else if (collision.gameObject.CompareTag("Shield"))
         {
@@ -40,11 +41,24 @@ public class MissileScript : MonoBehaviour
         else if (collision.gameObject.CompareTag("Enemy"))
         {
             collision.gameObject.GetComponent<EnemyHealthManager>().TakeHit();
+            Destroy(gameObject);
         }
         else
         {
             Destroy(gameObject);
         }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        // Check if velocity is too small, increase it if it is
+        while (Mathf.Sqrt((Mathf.Pow(Mathf.Abs(rb.velocity.x), 2)) + (Mathf.Pow(Mathf.Abs(rb.velocity.x), 2))) < 10)
+        {
+            rb.velocity = rb.velocity * 2;
+        }
+
+
+        rb.rotation = Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg;
     }
 
 }

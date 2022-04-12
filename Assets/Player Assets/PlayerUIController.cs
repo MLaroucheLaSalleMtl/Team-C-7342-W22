@@ -5,6 +5,11 @@ using UnityEngine.UI;
 
 public class PlayerUIController : MonoBehaviour
 {
+
+    /*---------------------------------------------
+     * Code written by Coleman Ostach
+     ---------------------------------------------*/
+
     [SerializeField] private Image healthFillable;
     [SerializeField] private Image abiltiyFillable;
 

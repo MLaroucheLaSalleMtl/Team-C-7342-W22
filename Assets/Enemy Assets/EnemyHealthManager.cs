@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class EnemyHealthManager : MonoBehaviour
 {
+
+    /*---------------------------------------------
+     * Code written by Coleman Ostach
+     ---------------------------------------------*/
+
     [SerializeField] private float enemyHealth = 1f;
     private float enemyMaxHealth;
 

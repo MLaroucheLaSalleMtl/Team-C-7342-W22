@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 refVelocity = Vector2.zero;
     [SerializeField] private float moveSpeed = 10f; //Player movement speed
     [SerializeField] private float moveSmoothing = 0.05f; //Player movement smoothing
+    public bool isMoving;
 
     //Variables for Jumping
     private bool isGrounded = false;
@@ -26,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
     const float checkRadius = 0.1f;
 
     //M&K inputs
-    private float keyHorizontalInput = 0;
+    public float keyHorizontalInput = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -45,7 +46,6 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector2 targetVelocity = new Vector2(keyHorizontalInput * moveSpeed, rigid.velocity.y);
         rigid.velocity = Vector2.SmoothDamp(rigid.velocity, targetVelocity, ref refVelocity, moveSmoothing);
-
     }
 
     void Jumping()
@@ -64,6 +64,7 @@ public class PlayerMovement : MonoBehaviour
     {
         moveInput = context.ReadValue<Vector2>();
         keyHorizontalInput = moveInput.x;
+        isMoving = context.performed;
     }
 
     public void onJump(InputAction.CallbackContext context)
