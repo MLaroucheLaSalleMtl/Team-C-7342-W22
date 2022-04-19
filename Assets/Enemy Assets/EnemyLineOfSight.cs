@@ -10,6 +10,7 @@ public class EnemyLineOfSight : MonoBehaviour
      ---------------------------------------------*/
 
     public float viewRadius;
+    public Transform target;
     [Range(0,360)]public float viewAngle;
 
     public LayerMask targetMask;
@@ -40,7 +41,7 @@ public class EnemyLineOfSight : MonoBehaviour
 
         for(int i = 0; i < targetInViewRadius.Length; i++)
         {
-            Transform target = targetInViewRadius[i].transform;
+            target = targetInViewRadius[i].transform;
             Vector2 dirToTarget = (target.position - transform.position).normalized;
 
             if(Vector2.Angle(-transform.up, dirToTarget) < viewAngle / 2)
@@ -49,19 +50,15 @@ public class EnemyLineOfSight : MonoBehaviour
 
                 if (!Physics2D.Raycast(transform.position, dirToTarget, dstToTarget, obstacleMask))
                 {
-                    print("Visible target : " + targetInViewRadius[i].name);
                     visibleTargets.Add(target);
+                }
+                else
+                {
+                    target = null;
                 }
             }
         }
     }
-
-    //public Vector2 DirFromAngle(float angleInDegrees, bool angleIsGlobal)
-    //{
-    //    if (!angleIsGlobal)
-    //        angleInDegrees += transform.eulerAngles.z;
-    //    return new Vector2(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
-    //}
 
     // Update is called once per frame
     void Update()

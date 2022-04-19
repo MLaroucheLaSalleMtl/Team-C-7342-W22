@@ -2,9 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-
-//Elizabeth
+//Elizabeth D'Avignon at first, but Coleman took over
 
 public class MissileTurretScript : MonoBehaviour
 {
@@ -21,6 +21,7 @@ public class MissileTurretScript : MonoBehaviour
     public EnemyLineOfSight los;
 
     private float missileTimer;
+
     void Start()
     {
         missileTimer = missileCooldown;
@@ -35,7 +36,7 @@ public class MissileTurretScript : MonoBehaviour
             if (missileTimer > 0)
             {
                 missileTimer -= Time.deltaTime;
-                Debug.Log("cooldown: " + missileTimer);
+                //Debug.Log("cooldown: " + missileTimer);
             }
             // Just putting an "else" creates several nonsensical errors that don't affect functionality
             else if (missileTimer < 0)
@@ -49,6 +50,7 @@ public class MissileTurretScript : MonoBehaviour
     public void ShootMissile()
     {
         Instantiate(missile, missileSpawn.transform.position, transform.rotation);
+        SoundManager.playSound?.Invoke(SoundManager.SoundType.MissileFire, transform.position);
     }
 
     void LookAtPlayer()

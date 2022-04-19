@@ -42,6 +42,8 @@ public class MenuControlScript : MonoBehaviour
 
     public void NewGameButton()
     {
+        if (GameManager.hasSave) GameManager.DeleteSave();
+
         gameObject.GetComponent<SceneManagerScript>().NewGame();
     }
 

@@ -32,11 +32,13 @@ public class MissileScript : MonoBehaviour
         {
             Debug.Log("ow");
             collision.gameObject.GetComponent<PlayerHealthManager>().TakeDamage(-10); //Coleman
+            SoundManager.playSound?.Invoke(SoundManager.SoundType.PlayerHit, transform.position);
             Destroy(gameObject);
         }
         else if (collision.gameObject.CompareTag("Shield"))
         {
-            //rb.AddForce(transform.right * missileSpeed);
+            SoundManager.playSound?.Invoke(SoundManager.SoundType.ShieldHit, transform.position); //Coleman
+            return;
         }
         else if (collision.gameObject.CompareTag("Enemy"))
         {
@@ -51,14 +53,16 @@ public class MissileScript : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        // Check if velocity is too small, increase it if it is
-        while (Mathf.Sqrt((Mathf.Pow(Mathf.Abs(rb.velocity.x), 2)) + (Mathf.Pow(Mathf.Abs(rb.velocity.x), 2))) < 10)
+        //Check if velocity is too small, increase it if it is
+        if (!collision.gameObject.CompareTag("Player"))
         {
-            rb.velocity = rb.velocity * 2;
+            while (Mathf.Sqrt((Mathf.Pow(Mathf.Abs(rb.velocity.x), 2)) + (Mathf.Pow(Mathf.Abs(rb.velocity.x), 2))) < 10)
+            {
+                rb.velocity = rb.velocity * 2;
+            }
+
+            rb.rotation = Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg;
         }
-
-
-        rb.rotation = Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg;
     }
 
 }

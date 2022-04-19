@@ -13,7 +13,7 @@ public class ShieldScript : MonoBehaviour
     private GameObject summonedShield;
     bool shieldButtonPressed;
     bool shieldState;
-    private bool boolControllerCheck = false;
+    
     private Vector3 mousePos;
     [SerializeField]
     public float shieldChargeMax; //Coleman, public for UI script
@@ -21,7 +21,7 @@ public class ShieldScript : MonoBehaviour
     private bool shieldOvercharged = false;
 
     //Variables for controller shield rotation (Coleman)
-    PlayerInput playerInput;
+    
     [SerializeField] private float rotationSpeed = 5f;
     private float stickHorizontalInput = 0f;
     private float stickVerticalInput = 0f;
@@ -37,7 +37,7 @@ public class ShieldScript : MonoBehaviour
         summonedShield.SetActive(false);
         shieldChargeCurrent = shieldChargeMax;
 
-        playerInput = GetComponentInParent<PlayerInput>(); //Coleman
+        
     }
 
     // Update is called once per frame
@@ -63,12 +63,12 @@ public class ShieldScript : MonoBehaviour
             shieldOvercharged = false;
         }
 
-        if (shieldChargeCurrent != shieldChargeMax) Debug.Log("charge: " + shieldChargeCurrent);
+        //if (shieldChargeCurrent != shieldChargeMax) Debug.Log("charge: " + shieldChargeCurrent);
 
-        CheckControlScheme();
+        
 
         //Shield facing
-        if (boolControllerCheck)
+        if (GameManager.CheckControlScheme())
         {
             StickShieldRotation(); //Coleman
         }
@@ -76,6 +76,11 @@ public class ShieldScript : MonoBehaviour
         {
             mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             LookAtMouse();
+        }
+
+        if (shieldButtonPressed && !shieldOvercharged) // Coleman
+        {
+            SoundManager.playSound?.Invoke(SoundManager.SoundType.Shield, transform.position); //Coleman
         }
     }
 
@@ -125,13 +130,7 @@ public class ShieldScript : MonoBehaviour
         stickVerticalInput = aimDirection.y;
     }
 
-    private void CheckControlScheme()
-    {
-        if (playerInput.currentControlScheme == "Xbox Controller")
-            boolControllerCheck = true;
-        else
-            boolControllerCheck = false;
-    }
+
 
     //----------------------------------------------
 }

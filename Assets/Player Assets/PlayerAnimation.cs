@@ -21,7 +21,9 @@ public class PlayerAnimation : MonoBehaviour
         animator.SetFloat("Horizontal", direction);
 
         if (isMoving)
+        {
             animator.SetInteger("AnimState", 1);
+        }
         else
             animator.SetInteger("AnimState", 0);
     }

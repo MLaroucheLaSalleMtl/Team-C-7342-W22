@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ac091e3838a58f4eb9996d4ddbc4a11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHealth: 5
+  enemyHealth: 2
 --- !u!1 &3501266055888463268
 GameObject:
   m_ObjectHideFlags: 0
@@ -231,10 +231,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9562152ef3dcd44c98a8471225eaed9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 1
-  target: {fileID: 0}
+  rotationSpeed: 2.5
   offset: 0.16
-  barrelTransform: {fileID: 0}
+  barrelTransform: {fileID: 3501266055952457387}
 --- !u!1 &3501266055952457386
 GameObject:
   m_ObjectHideFlags: 0
@@ -279,7 +278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7de83a1dddc01484b9caf2748f0d1770, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  missileCooldown: 2
+  missileCooldown: 1.5
   missile: {fileID: 123046372083648900, guid: f8b832f83a806a2458fdecb52b1899a6, type: 3}
   missileSpawn: {fileID: 3501266055952457386}
   los: {fileID: 3155188546038796857}
@@ -327,7 +326,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40fc5dc823eb21d48964f10ed15ea75b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  viewRadius: 7
+  viewRadius: 12
+  target: {fileID: 0}
   viewAngle: 90
   targetMask:
     serializedVersion: 2

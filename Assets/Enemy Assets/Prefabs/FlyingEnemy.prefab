@@ -94,9 +94,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySprite: {fileID: 5268183676235078774}
+  los: {fileID: 0}
   target: {fileID: 0}
+  proximityRadius: 5
   speed: 50
   nextWaypointDistance: 0.5
+  timer: 0
+  cooldown: 1
 --- !u!50 &5268183675529992892
 Rigidbody2D:
   serializedVersion: 4
@@ -179,6 +183,9 @@ MonoBehaviour:
   missile: {fileID: 123046372083648900, guid: f8b832f83a806a2458fdecb52b1899a6, type: 3}
   missileSpawn: {fileID: 5268183676113773664}
   los: {fileID: 7264243216826861385}
+  onShoot:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5268183676235078775
 GameObject:
   m_ObjectHideFlags: 0
@@ -364,8 +371,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 5
-  target: {fileID: 0}
   offset: 0.1
+  barrelTransform: {fileID: 0}
 --- !u!1 &6347139421488126549
 GameObject:
   m_ObjectHideFlags: 0
@@ -411,6 +418,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   viewRadius: 7
+  target: {fileID: 0}
   viewAngle: 90
   targetMask:
     serializedVersion: 2

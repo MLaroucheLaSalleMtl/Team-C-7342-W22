@@ -13,26 +13,33 @@ public class FlyingEnemyAI : MonoBehaviour
 
     public Transform enemySprite;
 
+    public EnemyLineOfSight los;
     public Transform target;
+    [SerializeField] float proximityRadius = 5f;
     [SerializeField] private float speed = 200f;
     [SerializeField] private float nextWaypointDistance = 3f;
 
     Path path;
     int currentWaypoint = 0;
-    bool reachedEndofPath = false;
 
     Seeker seeker;
     Rigidbody2D rigid;
 
-    //Timer for FindTarget
-    float secs = 5f;
-    float currentTime = 0f;
+    //Timer for FollowTarget
+    public float timer;
+    public float cooldown = 1f;
+
+    //Variables to flip sprite
+    [SerializeField] private SpriteRenderer headSprite;
 
     // Start is called before the first frame update
     void Start()
     {
+        los = GetComponentInChildren<EnemyLineOfSight>();
         seeker = GetComponent<Seeker>();
         rigid = GetComponent<Rigidbody2D>();
+        timer = cooldown;
+        headSprite = GetComponentInChildren<SpriteRenderer>(GameObject.Find("FlyingTurretHead"));
 
         InvokeRepeating("UpdatePath", 0f, 0.5f);
     }
@@ -52,31 +59,14 @@ public class FlyingEnemyAI : MonoBehaviour
         }
     }
 
-    void FindTarget()
-    {
-        Collider2D targetCollider = Physics2D.OverlapCircle(transform.position, 5);
-
-        if(targetCollider.CompareTag("Player"))
-        {
-            target = targetCollider.transform;
-        }
-    }
-
     // Update is called once per frame
     void FixedUpdate()
     {
-        FindTarget();
+        if(los.target != null)
+            target = los.target;
 
         if (path == null)
             return;
-
-        if (currentWaypoint >= path.vectorPath.Count)
-        {
-            reachedEndofPath = true;
-            return;
-        }
-        else
-            reachedEndofPath = false;
 
         Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rigid.position).normalized;
         Vector2 force = direction * speed * Time.deltaTime;
@@ -88,9 +78,9 @@ public class FlyingEnemyAI : MonoBehaviour
         if (distance < nextWaypointDistance)
             currentWaypoint++;
 
-        //if (rigid.velocity.x >= 0.01f)
-        //    enemySprite.localScale = new Vector3(-1f, 1f, 1f);
-        //else
-        //    enemySprite.localScale = new Vector3(1f, 1f, 1f);
+        if (direction.x >= 0.01f)
+            headSprite.flipX = true;
+        else
+            headSprite.flipX = false;
     }
 }

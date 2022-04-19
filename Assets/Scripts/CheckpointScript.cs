@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class CheckpointScript : MonoBehaviour
 {
+
+    //Made by Elizabeth D'Avignon
+
     [SerializeField] private int checkpointNumber;
     [SerializeField] private GameManager.Levels sceneNumber;
 
@@ -16,6 +19,11 @@ public class CheckpointScript : MonoBehaviour
             GameManager.WriteSave(checkpointNumber, (int)sceneNumber);
         }
 
+    }
+
+    public int GetCheckpointNumber()
+    {
+        return checkpointNumber;
     }
 
 }

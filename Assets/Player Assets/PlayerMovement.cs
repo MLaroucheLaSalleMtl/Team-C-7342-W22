@@ -29,6 +29,12 @@ public class PlayerMovement : MonoBehaviour
     //M&K inputs
     public float keyHorizontalInput = 0;
 
+    //CoyoteTime variables
+    //private bool canCoyoteJump;
+    //private float coyoteTime = 0.2f;
+    //private float coyoteTimeCounter;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,19 +45,24 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         Movement();
-        //JoystickPosition(); //Method for gamepad controls (Not Implemented yet)
     }
 
     public void Movement()
     {
         Vector2 targetVelocity = new Vector2(keyHorizontalInput * moveSpeed, rigid.velocity.y);
         rigid.velocity = Vector2.SmoothDamp(rigid.velocity, targetVelocity, ref refVelocity, moveSmoothing);
+
+        if(isMoving && isGrounded)
+            SoundManager.playSound?.Invoke(SoundManager.SoundType.PlayerMove, transform.position);
     }
 
     void Jumping()
     {
         if (isJumping && isGrounded)
+        {
             rigid.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
+            SoundManager.playOneShotSound?.Invoke(SoundManager.SoundType.PlayerJump);
+        }
     }
 
     void GroundCheck()

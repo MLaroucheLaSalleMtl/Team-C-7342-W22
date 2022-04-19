@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
+using System;
 
 
 
 
-//Made by Elizabeth
+//Made by Elizabeth D'Avignon
 
 //Save system heavily based on Code Monkey's tutorial series: https://www.youtube.com/playlist?list=PLzDRvYVwl53vRrMuPBkNNZUmnl1jCHcHs
 
@@ -19,8 +21,8 @@ public class GameManager : MonoBehaviour
     {
         LVL_PRELOADER,
         LVL_MAINMENU,
-        LVL_LEVELONE,
-        LVL_PROJECTILE
+        LVL_TUTORIAL,
+        LVL_FINAL
     }
 
     private static GameManager instance;
@@ -31,12 +33,16 @@ public class GameManager : MonoBehaviour
     {
         get { return instance; }
     }
+
+
     private static PlayerSave playerSave;
     Scene currentScene;
 
-    //temporary save testing vars
-    int tempCheckpoint;
-    int tempScene;
+    public static GameObject player;
+    private static PlayerInput playerInput;
+    private static bool controllerCheck;
+    private static GameObject[] checkpoints;
+    
 
 
 private void Awake()
@@ -49,53 +55,85 @@ private void Awake()
 
         instance = this;
         DontDestroyOnLoad(this.gameObject);
+
+        SoundManager.Initialize(); //Initialize the Dictionary in Sound Manager --Coleman--
     }
-    // Start is called before the first frame update
-    void Start()
+
+    private void OnEnable()
     {
+        SceneManager.sceneLoaded += OnLevelFinishedLoading;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnLevelFinishedLoading;
+    }
+
+
+    void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
+    {
+        //Debug.Log("Level Loaded");
+        //Debug.Log(scene.name);
+        //Debug.Log(mode);
+        player = null;
+
         currentScene = SceneManager.GetActiveScene();
-        tempCheckpoint = 0;
-        tempScene = 0;
+
         if (File.Exists(Application.dataPath + "/Save.txt"))
         {
+            Debug.Log("save found");
             hasSave = true;
+            LoadSave();
         }
 
-        if (currentScene.buildIndex != (int)Levels.LVL_PRELOADER || currentScene.buildIndex != (int)Levels.LVL_MAINMENU)
+        if (GameObject.FindGameObjectWithTag("Player"))
         {
-            if (GameObject.Find("PlayerPrefab") != null)
+            Debug.Log("Player found");
+            player = GameObject.FindGameObjectWithTag("Player");
+            playerInput = player.GetComponent<PlayerInput>();
+        }
+        else
+        {
+            Debug.Log("No Player Found");
+        }
+
+        if (player && hasSave)
+        {
+            Transform playerT = player.GetComponent<Transform>();
+            Debug.Log("Player x: " + playerT.position.x + " Player y:" + playerT.position.y);
+            if (scene.buildIndex == levelToLoad)
             {
-                Debug.Log("Player found");
+                Debug.Log("Right Scene to load");
+                checkpoints = GameObject.FindGameObjectsWithTag("Checkpoint");
+                foreach(GameObject cp in checkpoints)
+                {
+                    Debug.Log("checkpoint :" + cp.GetComponent<CheckpointScript>().GetCheckpointNumber());
+                    Debug.Log("Checking checkpoint");
+                    if (cp.GetComponent<CheckpointScript>().GetCheckpointNumber() == checkpointToLoad)
+                    {
+                        
+                        Debug.Log("Checkpoint x: " + cp.transform.position.x + " Checkpoint y:" + cp.transform.position.x);
+                        playerT.position = cp.transform.position;
+                        break;
+                    }
+                }
             }
         }
+
+        
+
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        //temporary save / load triggers
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            WriteSave(tempCheckpoint, tempScene);
-        }
 
-        if (Input.GetKeyDown(KeyCode.L))
+        if (player != null)
         {
-            LoadSave();
+            UpdateControlScheme();
         }
-
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            tempCheckpoint += 1;
-            Debug.Log("Checkpoint increase button pressed. tempCheckpoint now at: " + tempCheckpoint);
-        }
-
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            tempScene += 1;
-            Debug.Log("Scene increase button pressed. tempScene now at: " + tempScene);
-        }
+        
 
     }
 
@@ -159,4 +197,22 @@ private void Awake()
         public int checkpoint;
         public int level;
     }
+
+    public static bool CheckControlScheme()
+    {
+        return controllerCheck;
+    }
+
+    private static void UpdateControlScheme()
+    {
+        if (playerInput.currentControlScheme == "Xbox Controller")
+        {
+            controllerCheck = true;
+        }
+        else
+        {
+            controllerCheck = false;
+        }
+    }
+
 }

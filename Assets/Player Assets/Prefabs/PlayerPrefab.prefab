@@ -268,6 +268,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 6cc50741-7419-4ecf-9738-cb9209992218
     m_ActionName: Player/Shield Rotation[/XInputControllerWindows/rightStick]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1504357523}
+        m_TargetAssemblyTypeName: PlayerUIController, Assembly-CSharp
+        m_MethodName: OnEscape
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: ae63c5f8-172d-4764-87fa-4a6123f997d0
+    m_ActionName: Player/ReturnToMenu[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -285,7 +301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1a49da817cc5974c98e496aaebe85ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
+  moveSpeed: 8
   moveSmoothing: 0.05
   isMoving: 0
   groundCheck: {fileID: 8488571069642218641}
@@ -307,7 +323,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealth: 100
-  SceneLoader: {fileID: 0}
 --- !u!114 &2194757925768151806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -331,13 +346,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6281164460678579240}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a4da26c6873e54f4aa68fa55fa22da1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   healthFillable: {fileID: 0}
   abiltiyFillable: {fileID: 0}
+  levelText: {fileID: 0}
 --- !u!95 &947326256480867940
 Animator:
   serializedVersion: 4

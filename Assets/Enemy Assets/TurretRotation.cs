@@ -9,7 +9,7 @@ public class TurretRotation : MonoBehaviour
      ---------------------------------------------*/
 
     [SerializeField] private float rotationSpeed = 5f; //Speed of the turret head rotation
-    public Transform target; //Target of the rotation (Can be set to static object or even player)
+    Transform target; //Target of the rotation (Can be set to static object or even player)
 
     private Vector2 direction;
     private float angle;
@@ -24,14 +24,16 @@ public class TurretRotation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        los = GetComponent<EnemyLineOfSight>();
+        los = GetComponentInChildren<EnemyLineOfSight>();
         sprite = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        direction = target.position - transform.position;
+        if (los.target == null)
+            return;
+        direction = los.target.position - transform.position;
         angle = Mathf.Atan2((direction.y - offset), direction.x) * Mathf.Rad2Deg;
         rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);

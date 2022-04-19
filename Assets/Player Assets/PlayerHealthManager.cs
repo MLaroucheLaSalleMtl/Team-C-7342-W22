@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealthManager : MonoBehaviour
 {
@@ -13,20 +14,12 @@ public class PlayerHealthManager : MonoBehaviour
     public float playerHealth = 100.0f;
     private float playerMaxHealth = 100.0f;
 
-    [SerializeField] LevelTransitionScript SceneLoader;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     //Variable change needs to be negative float for damage and positive float for healing
     void HealthChange(float change)
     {
         playerHealth += change;
 
-        if (playerHealth < 0)
+        if (playerHealth <= 0)
             PlayerDeath();
         else
         if (playerHealth > playerMaxHealth)
@@ -45,16 +38,7 @@ public class PlayerHealthManager : MonoBehaviour
 
     void PlayerDeath()
     {
-        if(playerHealth <= 0)
-        {
-            print("The player has died");
-            SceneLoader.LoadLevel();
-        }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        SoundManager.playSound?.Invoke(SoundManager.SoundType.Death, transform.position);
+        SceneManager.LoadSceneAsync(2);
     }
 }

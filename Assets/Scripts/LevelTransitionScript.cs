@@ -2,21 +2,23 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 
-//made by Elizabeth
+
 public class LevelTransitionScript : MonoBehaviour
 {
+    //Made by Elizabeth D'Avignon
+
     //Need to figure out how to get this to be a variable in the editor, otherwise scene transitions will need to be hard-coded for each instance
     [SerializeField]
     private int[] SceneArray;
 
     public void Start()
     {
-
+        
     }
 
     public void LoadLevel()
     {
-        StartCoroutine(AsyncLoad((int)GameManager.Levels.LVL_LEVELONE));
+        StartCoroutine(AsyncLoad((int)GameManager.Levels.LVL_TUTORIAL));
     }
 
     //check needs to be added so that you can't click the continue button if there is no save file

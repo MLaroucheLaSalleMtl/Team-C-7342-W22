@@ -16,17 +16,14 @@ public class EnemyHealthManager : MonoBehaviour
     {
         enemyHealth--;
 
-        if (enemyHealth < 0)
+        if (enemyHealth <= 0)
             EnemyDeath();
     }
 
     void EnemyDeath()
     {
-        if (enemyHealth <= 0)
-        {
-            print("The enemy has died");
-            Destroy(gameObject);
-        }
+        SoundManager.playSound?.Invoke(SoundManager.SoundType.Death, transform.position);
+        Destroy(gameObject);
     }
 
     private void Start()

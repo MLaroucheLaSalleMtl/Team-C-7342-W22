@@ -10,11 +10,11 @@ public class SceneManagerScript : MonoBehaviour
     public int levelToResumeFrom;
     private int checkpointToResumeFrom;
 
-    //Made by Elizabeth
+    //Made by Elizabeth D'Avignon
 
     public void NewGame()
     {
-        StartCoroutine(AsyncLoad((int)GameManager.Levels.LVL_LEVELONE));   
+        StartCoroutine(AsyncLoad((int)GameManager.Levels.LVL_TUTORIAL));   
     }
 
 
